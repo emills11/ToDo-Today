@@ -109,10 +109,6 @@ public class MainActivity extends AppCompatActivity {
         dateDisplay.setText(date);
     }
 
-    //TODO: Current bug is that primary key generation for db table entries does not get adjusted
-    //      when entries are removed from table
-    //      Internal table is kept with absolute id values for AUTOINCREMENT, possible solution to
-    //      modify this internal table? (Maybe not possible)
     public void removeItems(View view) {
         if (!itemsToRemove.isEmpty()) {
             TodoListTableDao dao = db.todoListTableDao();
