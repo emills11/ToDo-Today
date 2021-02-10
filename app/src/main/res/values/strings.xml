@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ToDo-Today</string>
+    <string name="top_banner_title">To Do Today</string>
+    <string name="top_banner_date_default">Jan 1, 1970</string>
+    <string name="list_item_text_default">List item</string>
+    <string name="new_item_FAB_description">Add new item to todoListRecyclerView</string>
+    <string name="new_item_top_banner_text">Add a New To Do</string>
+    <string name="new_item_itemhint">To Do Item</string>
+    <string name="new_item_button">Add</string>
+    <string name="remove_completed">Remove Completed</string>
+</resources>
