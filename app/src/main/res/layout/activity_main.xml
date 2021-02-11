@@ -53,20 +53,20 @@
         android:contentDescription="@string/new_item_FAB_description"
         android:onClick="addNewItem"
         android:src="@drawable/add_new_item_30dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <RelativeLayout
         android:id="@+id/removeCompletedRelLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/purple_500"
+        android:onClick="removeItems"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:visibility="gone"
-        android:onClick="removeItems">
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:id="@+id/removeCompletedTextView"
