@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout removeCompletedRelLayout;
     private FloatingActionButton newItemFAB;
 
+    //itemsToRemove is a HashSet to ensure no items are added twice, and for constant time operations
     private HashSet<Integer> itemsToRemove;
 
     @Override
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         //Initialize RecyclerView, adapter, and adapterHandler
         todoListRecyclerView = findViewById(R.id.todoListRecyclerView);
         adapter = new TodoListRecyclerViewAdapter();
+
+        //AdapterHandler is used to handle arguments from a ViewHolder while using resources from MainActivity
+        //handleItemRemoval adds or removes RecyclerView items to a removal queue depending on
+        // whether or not the item's associated checkbox is checked. It additionally updates the
+        // activity's UI as needed.
         adapter.adapterHandler = new TodoListAdapterHandler() {
             @Override
             public void handleItemRemoval(int position, boolean isChecked) {
@@ -100,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Sets the date at the top of the screen
     private void updateDateDisplay() {
-        //Set the current date at top of screen
         TextView dateDisplay = findViewById(R.id.topBannerDateTextView);
         Calendar calendar = Calendar.getInstance();
         DateFormat dateFormat = SimpleDateFormat.getDateInstance();
@@ -109,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
         dateDisplay.setText(date);
     }
 
+    //removeItems is called when removeCompletedRelLayout layout is clicked. For each item
+    // currently in itemsToRemove, the table entry associated with that item is removed, and
+    // all ids in the table are appropriately updated. itemsToRemove is then cleared, and
+    // all UI components are also appropriately updated.
     public void removeItems(View view) {
         if (!itemsToRemove.isEmpty()) {
             TodoListTableDao dao = db.todoListTableDao();
