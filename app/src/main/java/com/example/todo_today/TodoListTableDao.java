@@ -17,8 +17,8 @@ public interface TodoListTableDao {
     @Query("DELETE FROM todo_list_table WHERE id=:id")
     void deleteItem(int id);
 
-    @Query("UPDATE todo_list_table SET id = id - 1 WHERE id > :deleted")
-    void updateIds(int deleted);
+    @Query("UPDATE todo_list_table SET id = id - :deletedCount")
+    void updateAllIds(int deletedCount);
 
     @Query("SELECT id FROM todo_list_table ORDER BY id DESC LIMIT 1")
     Integer getLastId();

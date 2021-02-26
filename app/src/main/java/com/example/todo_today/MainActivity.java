@@ -125,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
             for (int position : itemsToRemove) {
                 dao.deleteItem(position);
-                dao.updateIds(position);
             }
+
+            //TODO: fix this so it doesn't overflow list size
+            dao.updateAllIds(itemsToRemove.size());
 
             itemsToRemove.clear();
 
