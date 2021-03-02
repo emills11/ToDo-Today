@@ -11,15 +11,15 @@ public interface TodoListTableDao {
     @Query("SELECT * FROM todo_list_table")
     List<TodoListItem> getAll();
 
-    @Query("INSERT INTO todo_list_table (id, list_item_name) VALUES (:id, :listItemName)")
-    void insertNewItem(int id, String listItemName);
+    @Query("INSERT INTO todo_list_table (list_item_name, list_item_position) VALUES (:listItemName, :listItemPosition)")
+    void insertNewItem(String listItemName, int listItemPosition);
 
-    @Query("DELETE FROM todo_list_table WHERE id=:id")
-    void deleteItem(int id);
+    @Query("DELETE FROM todo_list_table WHERE list_item_position = :listItemPosition")
+    void deleteItem(int listItemPosition);
 
-    @Query("UPDATE todo_list_table SET id = id - :deletedCount")
-    void updateAllIds(int deletedCount);
+    @Query("UPDATE todo_list_table SET list_item_position = :i WHERE list_item_position = :listItemPosition")
+    void updateId(int i, int listItemPosition);
 
-    @Query("SELECT id FROM todo_list_table ORDER BY id DESC LIMIT 1")
-    Integer getLastId();
+    @Query("SELECT list_item_position FROM todo_list_table ORDER BY list_item_position DESC LIMIT 1")
+    Integer getLastListItemPosition();
 }

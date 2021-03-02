@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
                         removeCompletedRelLayout.setVisibility(View.VISIBLE);
                     }
 
-                    itemsToRemove.add(position + 1);
+                    itemsToRemove.add(position);
                 } else {
-                    itemsToRemove.remove(position + 1);
+                    itemsToRemove.remove(position);
 
                     if (itemsToRemove.isEmpty() && removeCompletedRelLayout.getVisibility() == View.VISIBLE) {
                         removeCompletedRelLayout.setVisibility(View.GONE);
@@ -127,8 +127,11 @@ public class MainActivity extends AppCompatActivity {
                 dao.deleteItem(position);
             }
 
-            //TODO: fix this so it doesn't overflow list size
-            dao.updateAllIds(itemsToRemove.size());
+            int i = 0;
+            for (TodoListItem item : dao.getAll()) {
+                dao.updateId(i, item.listItemPosition);
+                i++;
+            }
 
             itemsToRemove.clear();
 

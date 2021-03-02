@@ -32,14 +32,14 @@ public class NewItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TodoListTableDao dao = MainActivity.db.todoListTableDao();
 
-                int id;
+                int listItemPosition;
                 if (dao.getAll().isEmpty()) {
-                    id = 1;
+                    listItemPosition = 0;
                 } else {
-                    id = dao.getLastId() + 1;
+                    listItemPosition = dao.getLastListItemPosition() + 1;
                 }
 
-                dao.insertNewItem(id, newItemFormItemEditText.getText().toString());
+                dao.insertNewItem(newItemFormItemEditText.getText().toString(), listItemPosition);
                 NewItemActivity.this.finish();
             }
         });
