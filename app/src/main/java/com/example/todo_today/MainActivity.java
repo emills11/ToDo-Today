@@ -1,6 +1,7 @@
 package com.example.todo_today;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+        Toolbar topBannerToolbar = findViewById(R.id.topBannerToolbar);
+        setSupportActionBar(topBannerToolbar);
     }
 
     //onStart sets date info and sets some parameters for RecyclerView

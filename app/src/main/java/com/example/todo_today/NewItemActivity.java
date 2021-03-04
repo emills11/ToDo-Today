@@ -1,6 +1,8 @@
 package com.example.todo_today;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,12 @@ public class NewItemActivity extends AppCompatActivity {
         //Initialize UI elements
         newItemFormItemEditText = findViewById(R.id.newItemFormItemEditText);
         newItemFormButton = findViewById(R.id.newItemFormButton);
+
+        Toolbar newItemTopBannerToolBar = findViewById(R.id.newItemTopBannerToolbar);
+        setSupportActionBar(newItemTopBannerToolBar);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
