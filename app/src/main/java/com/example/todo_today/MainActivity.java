@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static TodoListDatabase db;
 
-    private RelativeLayout removeCompletedRelLayout;
+    private FloatingActionButton removeCompletedFAB;
     private FloatingActionButton newItemFAB;
 
     //itemsToRemove is a HashSet to ensure no items are added twice, and for constant time operations
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         //Initialize database
         db = TodoListDatabase.getInstance(this);
 
-        removeCompletedRelLayout = findViewById(R.id.removeCompletedRelLayout);
+        removeCompletedFAB = findViewById(R.id.removeCompletedFAB);
         newItemFAB = findViewById(R.id.newItemFAB);
 
         //Initialize RecyclerView, adapter, and adapterHandler
@@ -61,17 +61,17 @@ public class MainActivity extends AppCompatActivity {
                     itemsToRemove = new HashSet<>();
                 }
                 if (isChecked) {
-                    if (removeCompletedRelLayout.getVisibility() == View.GONE) {
+                    if (removeCompletedFAB.getVisibility() == View.GONE) {
                         newItemFAB.setVisibility(View.GONE);
-                        removeCompletedRelLayout.setVisibility(View.VISIBLE);
+                        removeCompletedFAB.setVisibility(View.VISIBLE);
                     }
 
                     itemsToRemove.add(position);
                 } else {
                     itemsToRemove.remove(position);
 
-                    if (itemsToRemove.isEmpty() && removeCompletedRelLayout.getVisibility() == View.VISIBLE) {
-                        removeCompletedRelLayout.setVisibility(View.GONE);
+                    if (itemsToRemove.isEmpty() && removeCompletedFAB.getVisibility() == View.VISIBLE) {
+                        removeCompletedFAB.setVisibility(View.GONE);
                         newItemFAB.setVisibility(View.VISIBLE);
                     }
                 }
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             todoListItemArray = (ArrayList<TodoListItem>) dao.getAll();
             adapter.setTodoListItemArrayList(todoListItemArray);
 
-            removeCompletedRelLayout.setVisibility(View.GONE);
+            removeCompletedFAB.setVisibility(View.GONE);
             newItemFAB.setVisibility(View.VISIBLE);
         }
     }

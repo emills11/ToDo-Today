@@ -63,6 +63,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="?attr/colorSecondary"
+        app:borderWidth="0dp"
         android:contentDescription="@string/new_item_FAB_description"
         android:onClick="addNewItem"
         android:src="@drawable/add_new_item_30dp"
@@ -70,27 +71,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/removeCompletedRelLayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/my_green"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/removeCompletedFAB"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/my_green"
+        app:borderWidth="0dp"
+        android:contentDescription="@string/remove_completed_FAB_description"
         android:onClick="removeItems"
+        android:src="@drawable/remove_completed_30dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <TextView
-            android:id="@+id/removeCompletedTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/remove_completed"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
